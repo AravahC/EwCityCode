@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4a10e3693adc2c5499d5556db4a3ec39
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GameOverText: {instanceID: 0}
+  - ScoreText: {instanceID: 0}
+  - FlyPrefab: {fileID: 8253570113701779501, guid: 92e992ee0b751474f8959ad0480b9fe5, type: 3}
+  - restartButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
