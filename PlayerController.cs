@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //initializes variables and gameObjects
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         audioSource = GetComponent<AudioSource>(); 
         Physics.gravity *= gravityModifier;
@@ -42,53 +43,39 @@ public class PlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {    
+        //goes through the animation screens (I set the indicators for jumping through Unity's animation GUI)
         playerAnim.SetFloat("Height", transform.position.y);
         if (Input.GetKeyDown(KeyCode.UpArrow) && (isOnGround))
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            // 
+            //plays the jump sound
             audioSource.PlayOneShot(jumpSound, 1.0f);
             
             isOnGround = false;
-           // playerAnim.SetTrigger("Jump_start");
-            //Debug.Log("Current Pos = " + transform.position);
-
         }
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            //if (gameManager.canFire)
-            // {
-            // Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            //if the ball is allowed to be spawned, spawn a ball
             if (gameManager.waitBall == false)
             {
                 Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
                 StartCoroutine(spawnBall());
             }
-        
-           // }   
         }
         if (gameManager.gameOver)
         {
             Destroy(gameObject);
         }
-        //if (transform.position.z < zBound)
-       // {
-      //      //transform.position = new Vector3 (xPos, yPos, zPos); //jumps to original position
-      //      transform.position = new Vector3(transform.position.x, transform.position.y, zBound);
-     //       Debug.Log("Current Pos = " + transform.position);
-     //   }
+
+       //keeps the player within bounds
         if (transform.position.x <xBoundn)
         {
-            //transform.position = new Vector3(xPos, yPos, zPos); // jump to original
             transform.position = new Vector3(xBoundn, transform.position.y, transform.position.z);
-           // Debug.Log("Current Pos = " + transform.position);
         }
         if (transform.position.x > xBoundp)
         {
-            //transform.position = new Vector3(xPos, yPos, zPos); // jump to original
             transform.position = new Vector3(xBoundp, transform.position.y, transform.position.z);
-            //Debug.Log("Current Pos = " + transform.position);
         }
         if (transform.position.z != zBound)
         {
