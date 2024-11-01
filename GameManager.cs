@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public GameObject FlyPrefab;
 
     public Button restartButton;
-   // public Button startButton;
     public bool gameOver=false;
     public bool canFire = true;
     public bool waitBall = false;
@@ -30,22 +29,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //initializing variables and gameObjects
         FlyPrefab = GameObject.FindWithTag("Enemy");
         GameOverText.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(false);
-        //startButton.gameObject.SetActive(true);
         beginningText.gameObject.SetActive(true);
         beginningText.text = "toggle H to see directions";
-        //if (startGame == true)
-        //{
-        //    startButton.gameObject.SetActive(true);
-        //    beginningText.gameObject.SetActive(true);
-        //}
-        //else
-        //{
-        //    startButton.gameObject.SetActive(false);
-        //    beginningText.gameObject.SetActive(false);
-        //}
 
         ScoreText.text = "Score: " + score;
     }
@@ -53,28 +42,26 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //change Directions refers to the change of the text directions, not to the movement of the player
         if (Input.GetKeyDown(KeyCode.H))
         {
             ChangeDirections();
         }
-        // if (FlyPrefab.transform.position.x < -45)
-        // {
-        //     Debug.Log("Game is over!");
-        //     GameOver();
-        // }
     }
+    //sets GameOver to true and sets the restart button to appear
     public void GameOver()
     {
         gameOver = true;
         GameOverText.gameObject.SetActive(true);
-        //FlyPrefab.gameObject.SetActive(false);
         restartButton.gameObject.SetActive(true);
     }
+    //updates score
     public void UpdateScore(int ScoreToAdd)
     {
         score += ScoreToAdd;
         ScoreText.text = "Score: " + score;
     }
+    //restarts the game and reloads the scene when the restart button is pressed
     public void RestartGame()
     {
         gameOver = false;
@@ -82,6 +69,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
        // startGame = false;
     }
+    //toggles the directions on the screen
     public void ChangeDirections()
     {
         directionsState = !directionsState;
@@ -90,9 +78,6 @@ public class GameManager : MonoBehaviour
             beginningText.text = "Welcome to Ew City\r\nPress Spacebar to kill flies\r\nUp Arrow to jump\r\nVaccines give you ten points\r\nYou lose when a fly gets past you";
         }
         else { beginningText.text = "toggle H to see directions"; }
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //startButton.gameObject.SetActive(false);
-       // beginningText.gameObject.SetActive(directionsState);
     }
 
 }
