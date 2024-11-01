@@ -16,6 +16,7 @@ public class MoveForward : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       //moves the red fireball forward, and lets the player know when it can fire another fireball again
         transform.Translate(Vector3.right * Time.deltaTime * speed);
         if (transform.position.x > -10)
         {
