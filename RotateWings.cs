@@ -23,31 +23,7 @@ public class RotateWings : MonoBehaviour
     }
 
     // Update is called once per frame
-   // void Update()
-   // {
-        //transform.Rotate(transform.up, speed);
-        //RotateWing(rotationAmount, rotateClockwise);
-    //}
-    //public void RotateWing(int rotationAmount, bool rotateClockWise)
-    //{
-    //    if (rotateClockWise)
-    //    {
-    //        transform.Rotate(new Vector3(0, rotationAmount, 0));
-    //    }
-    //    if (transform.rotation.eulerAngles.y >= 60)
-    //    {
-    //        rotateClockWise = false;
-    //    }
-    //    else
-    //    {
-    //        transform.Rotate(new Vector3(0, -rotationAmount, 0));
-    //    }
-    //    if (transform.rotation.eulerAngles.y <= -30)
-    //    {
-    //        rotateClockWise = true;
-    //    }
-    //}r
-
+//helps rotate the wings left and right. 
     protected virtual void Update()
     {
         Quaternion from = Quaternion.Euler(this.m_from);
