@@ -15,6 +15,7 @@ public class MoveLeftPU : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    //moves the powerup forward
         if (gameManager.gameOver == false)
         {
             transform.Translate(Vector3.forward * Time.deltaTime * speed);
@@ -30,17 +31,14 @@ public class MoveLeftPU : MonoBehaviour
     }
     private void OnCollisionExit(Collision other)
     {
+        //if collides with the player, destroy itself
         if (other.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            Debug.Log("Powerup collided with player!");
         }
+        //if it collides with the plane outside of player's view, destroy itself
         else if (other.gameObject.tag == "FrontPlane" || other.gameObject.tag=="Powerup") {
             Destroy(gameObject);
-        }
-        else
-        {
-            Debug.Log("I did not collide with player, but with something else");
         }
     }
 }
