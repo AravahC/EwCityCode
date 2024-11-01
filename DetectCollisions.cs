@@ -41,10 +41,6 @@ public class DetectCollisions : MonoBehaviour
             Destroy(gameObject);
             gameManager.UpdateScore(-5);
         }
-      //  Destroy(gameObject);
-        //Destroy(other.gameObject);
-       // gameManager.canFire = true;
-        //gameManager.UpdateScore(1);
 
     }
 }
