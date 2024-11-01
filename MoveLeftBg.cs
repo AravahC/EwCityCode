@@ -15,6 +15,7 @@ public class MoveLeftBg : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    //moves the background during the game
         if (gameManager.gameOver == false)
         {
             transform.Translate(Vector3.left * Time.deltaTime * speed);
