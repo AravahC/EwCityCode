@@ -17,41 +17,29 @@ public class MoveLeftFly : MonoBehaviour
 
     private GameManager gameManager;
 
-    //public TextMeshProUGUI GameOverText;
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         flyRb = GetComponent<Rigidbody>();
         zBound = transform.position.z;
-       // GameOverText = GameObject.Find("GameOver").GetComponent<TextMeshProUGUI>();
-        //GameOverText.gameObject.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
-        //the creature is rotated and whne I put in my character I must rotate it back
-        transform.Translate(Vector3.up * Time.deltaTime * speed); //up means that the fly is z positive, forward means positive x, left means y positive
-                                                                  //transform.Translate(Vector3.left * Time.deltaTime * speedFly);
-                                                                  // transform.Translate(Vector3.left * 0.1f);
-                                                                  //if ((transform.position.y > 5) || (transform.position.y<1))
-                                                                  //{
-                                                                  //   transform.Translate(transform.position.x, 0, transform.position.z);
-                                                                  //   speedFly *= -1;
-                                                                  //     Debug.Log("Vector3.left=" + Vector3.left);
-                                                                  // }
-                                                                  //transform.Translate(-23, transform.position.y, transform.position.z);
+        //move the fly upwards
+        transform.Translate(Vector3.up * Time.deltaTime * speed); 
 
         speedFly = Random.Range(0,10);
         speed = Random.Range(10,30);
 
-              if (isOnGround)
-        {
+        if (isOnGround){
+            //move the fly upwards with irregularity
             flyRb.AddForce(Vector3.up * speedFly, ForceMode.Impulse);
-            //transform.Translate(Vector3.forward * Time.deltaTime * speedFly);
             isOnGround = false;
            
         }
+        //keeps the fly within bounds
         if (transform.position.y<-yBound)
         {
             Destroy(gameObject);
@@ -64,10 +52,8 @@ public class MoveLeftFly : MonoBehaviour
         {
             transform.position=new Vector3(transform.position.x, transform.position.y, zBound);
         }
-        //if (transform.position.x < -50)
-        //{
-         //   GameOver();
-        //}
+
+        //keeps the fly from going through the ground
         if (transform.position.y < 0.5f)
         {
             transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
@@ -82,17 +68,5 @@ public class MoveLeftFly : MonoBehaviour
     {
         isOnGround = true;
     }
-    //private void GameOver()
-    //{
-    //   GameOverText.gameObject.SetActive(true);
-    //}
-
-    //    private void OnTriggerEnter(Collider other)
-    //    {
-    //        if (other.CompareTag("Powerup"))
-    //        {
-    //            gameManager.score += 0;
-    //        }
-    //    }
 }
 
