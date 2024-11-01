@@ -14,16 +14,16 @@ public class RepeatBackground : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+    //instantiates variables and gameObjects
         startPos = transform.position;
         repeatWidth = GetComponent<BoxCollider>().size.x /2;
         sizer = GetComponent<BoxCollider>().size;
-        //repeatWidth = 38;
-        Debug.Log("Size of Box Collider: " + sizer);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //resets the position of the city so it looks like the player is moving through the city
         if (transform.position.x < (startPos.x - repeatWidth))
         {
             transform.position = startPos;
